@@ -1,0 +1,30 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: plant-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/plant?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+app:
+  upload-dir: ${UPLOAD_DIR:./uploads}
+  settings:
+    encryption-key: ${SETTINGS_ENCRYPTION_KEY:dev-only-plant-settings-key-change-in-production-0123456789}
+  jwt:
+    secret: ${JWT_SECRET:change-this-local-development-secret-key-to-your-own-secret-2026}
+    expiration-seconds: 86400
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com/v1}
+      model: ${OPENAI_MODEL:gpt-4.1-mini}
+      timeout-seconds: ${OPENAI_TIMEOUT_SECONDS:60}
+    rate-limit-per-minute: ${AI_RATE_LIMIT_PER_MINUTE:20}
+
+logging:
+  level:
+    com.example.plant: INFO
